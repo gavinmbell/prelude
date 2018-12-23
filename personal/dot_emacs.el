@@ -344,4 +344,15 @@
 (setq flymd-browser-open-function 'my-flymd-browser-function)
 (setq mouse-autoselect-window t)
 (setq focus-follows-mouse t)
+
+
+;;-----------------------------------
+;; Make my keys the way I like them on my mac
+;;-----------------------------------
+(setq mac-command-modifier 'meta) ; make cmd key do Meta
+(setq mac-option-modifier 'super) ; make opt key do Super
+(setq mac-control-modifier 'control) ; make Control key do Control
+(setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
+;;-----------------------------------
+
 ;;(setq magithub-debug-mode t)

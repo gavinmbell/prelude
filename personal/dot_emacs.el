@@ -45,6 +45,8 @@
         (left . 50)
         (top . 50)))
 
+(require 'ns-auto-titlebar)
+(when (eq system-type 'darwin) (ns-auto-titlebar-mode))
 
 (load-theme 'zenburn t)
 

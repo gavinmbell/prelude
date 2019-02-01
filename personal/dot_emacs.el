@@ -49,6 +49,7 @@
 (when (eq system-type 'darwin) (ns-auto-titlebar-mode))
 
 (load-theme 'zenburn t)
+(add-hook 'sh-mode-hook 'flycheck-mode)
 
 ;(require 'cljr-helm)
 
@@ -347,6 +348,9 @@
 (setq mouse-autoselect-window t)
 (setq focus-follows-mouse t)
 
+;;Because I don't like SWIPER...
+(global-unset-key "\C-s")
+(global-set-key "\C-s" 'isearch-forward)
 
 ;;-----------------------------------
 ;; Make my keys the way I like them on my mac

@@ -65,7 +65,7 @@
 
 (global-set-key (kbd "C-<return>") 'company-complete)
 (global-set-key (kbd "M-\`") 'other-frame)
-
+(global-set-key (kbd "s-%") 'replace-string)
 (setq tramp-default-user "${USER}")
 
 ;;------------------

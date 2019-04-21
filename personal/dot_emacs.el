@@ -79,9 +79,11 @@
 ;;(load "~/.emacs.d/personal/misc.el")
 ;;------------------
 
-
+(require 'aggressive-indent)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 ;;(add-hook 'clojure-mode-hook 'auto-complete-mode)
+(add-hook 'clojure-mode-hook 'aggressive-indent-mode)
+(add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
 ;;
 ;;
 (setq cider-repl-clear-help-banner nil)

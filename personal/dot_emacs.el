@@ -51,7 +51,9 @@
 (load-theme 'zenburn t)
 (add-hook 'sh-mode-hook 'flycheck-mode)
 
-;(require 'cljr-helm)
+(require 'flycheck-clj-kondo)
+
+;;(require 'cljr-helm)
 
 ;;Don't like the 80 column thing so overriding the following, but without the ""lines-tail""
 ;; core/prelude-editor.el
@@ -83,6 +85,8 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)
 ;;(add-hook 'clojure-mode-hook 'auto-complete-mode)
 (add-hook 'clojure-mode-hook 'aggressive-indent-mode)
+(add-hook 'clojure-mode-hook 'clj-refactor-mode)
+(add-hook 'clojure-mode-hook 'yas-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
 ;;
 ;;
@@ -331,12 +335,12 @@
 ;;-----------------------------------------------------------------
 
 (with-eval-after-load "zenburn-theme"
-     (zenburn-with-color-variables
-            (custom-theme-set-faces
-                   'zenburn
-                   ;; original `(default ((t (:foreground ,zenburn-fg :background ,zenburn-bg))))
-                   `(default ((t (:foreground ,zenburn-fg :background ,zenburn-bg-1))))
-                   (set-face-background 'region zenburn-bg))))
+  (zenburn-with-color-variables
+    (custom-theme-set-faces
+     'zenburn
+     ;; original `(default ((t (:foreground ,zenburn-fg :background ,zenburn-bg))))
+     `(default ((t (:foreground ,zenburn-fg :background ,zenburn-bg-1))))
+     (set-face-background 'region zenburn-bg))))
 
 
 (defun my-flymd-browser-function (url)
@@ -372,7 +376,7 @@
 ;;(require 'company-solidity)
 
 (add-hook 'solidity-mode-hook
-	  (lambda ()
-	    (set (make-local-variable 'company-backends)
-		 (append '((company-solidity company-capf company-dabbrev-code))
-			 company-backends))))
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 (append '((company-solidity company-capf company-dabbrev-code))
+                         company-backends))))

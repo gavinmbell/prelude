@@ -270,6 +270,44 @@
 ;;  (interactive)
 ;;  (sql-connect-preset 'rllocal))
 ;;
+
+
+;; see: https://emacsredux.com/blog/2013/06/13/using-emacs-as-a-database-client/
+;; run M-x sql-connect and pick the database to connect to
+(setq sql-connection-alist '((rust-local-dev (sql-product 'postgres)
+                                             (sql-server "127.0.0.1")
+                                             (sql-port 5432)
+                                             (sql-database "newsletter")
+                                             (sql-user "postgres")
+                                             (sql-password "password"))
+
+                             (rust-do-prod   (sql-product 'postgres)
+                                             (sql-server "")
+                                             (sql-port 5432)
+                                             (sql-database "newsletter")
+                                             (sql-user "")
+                                             (sql-password ""))))
+
+(defun sql-connect-preset (name)
+  "Connect to a predefined SQL connection listed in `sql-connection-alist'"
+  (eval `(let ,(cdr (assoc name sql-connection-alist))
+           (flet ((sql-get-login (&rest what)))
+                 (sql-product-interactive sql-product)))))
+
+(defun sql-local ()
+  (interactive)
+  (sql-connect-preset 'rust-local-dev))
+
+(defun sql-prod ()
+  (interactive)
+  (sql-connect-preset 'rust-do-prod))
+
+(defun sql-rl-local ()
+  (interactive)
+  (sql-connect-preset 'rllocal))
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;; MUDS!:                                                                  ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

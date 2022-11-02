@@ -46,7 +46,7 @@
 (message "[Prelude] Prelude is powering up... Be patient, Master %s!" prelude-user)
 
 (when (version< emacs-version "25.1")
-  (error "[Prelude] Prelude requires GNU Emacs 25.1 or newer, but you're running %s" emacs-version))
+  (error "[Prelude] Prelude requires GNU Emacs 25.1 or newer, but you're rnniung %s" emacs-version))
 
 ;; Always load newest byte code
 (setq load-prefer-newer t)

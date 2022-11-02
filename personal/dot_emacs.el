@@ -68,6 +68,7 @@
 (global-set-key (kbd "C-<return>") 'company-complete)
 (global-set-key (kbd "M-\`") 'other-frame)
 (global-set-key (kbd "s-%") 'replace-string)
+(global-set-key (kbd "C-x r DEL") 'bookmark-delete)
 (setq tramp-default-user "${USER}")
 
 ;;------------------

@@ -83,12 +83,44 @@
 ;;------------------
 
 (require 'aggressive-indent)
+;;Note? With this set we have to opt out of aggressive indent mode
+(global-aggressive-indent-mode 1)
+(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+
+;;Clojure... (redundant because I have already set global-aggressive-indent-mode 1)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 ;;(add-hook 'clojure-mode-hook 'auto-complete-mode)
 (add-hook 'clojure-mode-hook 'aggressive-indent-mode)
 (add-hook 'clojure-mode-hook 'clj-refactor-mode)
 (add-hook 'clojure-mode-hook 'yas-minor-mode)
+
+;;Emacs Lisp... (redundant because I have already set global-aggressive-indent-mode 1)
 (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
+
+;;RUST stuff.... (redundant because I have already set global-aggressive-indent-mode 1)
+(add-hook 'rust-mode-hook 'aggressive-indent-mode)
+(require 'dap-cpptools)
+(with-eval-after-load 'dap-cpptools
+  ;; Add a template specific for debugging Rust programs.
+  ;; It is used for new projects, where I can M-x dap-edit-debug-template
+  (dap-register-debug-template "Rust::CppTools Run Configuration"
+                               (list :type "cppdbg"
+                                     :request "launch"
+                                     :name "Rust::Run"
+                                     :args []
+                                     :MIMode "gdb"
+                                     :miDebuggerPath "rust-gdb"
+                                     :environment []
+                                     :program "${workspaceFolder}/target/debug/hello / replace with binary"
+                                     :cwd "${workspaceFolder}"
+                                     :console "external"
+                                     :dap-compilation "cargo build"
+                                     :dap-compilation-dir "${workspaceFolder}")))
+
+(with-eval-after-load 'dap-mode
+  (setq dap-default-terminal-kind "integrated") ;; Make sure that terminal programs open a term for I/O in an Emacs buffer
+  (dap-auto-configure-mode +1))
+
 ;;
 ;;
 (setq cider-repl-clear-help-banner nil)

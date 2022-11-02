@@ -32,3 +32,8 @@ var/
 .lsp-session*
 gotools/
 eln-cache/
+.dap-breakpoints
+.extension/
+anaconda-mode/
+helm-adaptive-history
+projects

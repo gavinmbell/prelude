@@ -20,7 +20,8 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 ;;(setq transient-mark-mode nil)
-(global-linum-mode 1)
+;;(global-linum-mode 1) ;;old shit pre 29.1
+(global-display-line-numbers-mode 1)
 (global-hl-line-mode 0)
 
 (setq mac-option-key-is-meta nil
@@ -404,6 +405,7 @@
 ;;"ESC < ESC x inser TAB f TAB RET .he TAB RET C-s des C-e RET TAB"))
 
 ;;-----------------------------------------------------------------
+(setq prelude-whitespace nil)
 
 (with-eval-after-load "zenburn-theme"
   (zenburn-with-color-variables
@@ -451,3 +453,14 @@
             (set (make-local-variable 'company-backends)
                  (append '((company-solidity company-capf company-dabbrev-code))
                          company-backends))))
+;;-----------------------------------
+;; LSP settings (see: https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/)
+;;-----------------------------------
+(setq lsp-headerline-breadcrumb-enable t)
+;;(setq lsp-ui-sideline-enable t)
+;;(setq lsp-lens-enable t)
+;;(setq lsp-modeline-code-actions-enable t)
+;;(setq lsp-enable-symbol-highlighting t)
+;;(setq lsp-lens-enable t)
+;;(setq lsp-completion-show-detail t)
+;;(setq lsp-completion-show-kind t)

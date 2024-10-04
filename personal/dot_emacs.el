@@ -112,11 +112,12 @@
                                      :MIMode "gdb"
                                      :miDebuggerPath "rust-gdb"
                                      :environment []
-                                     :program "${workspaceFolder}/target/debug/hello / replace with binary"
+                                     :program "${workspaceFolder}/target/debug/scaleness"
                                      :cwd "${workspaceFolder}"
                                      :console "external"
                                      :dap-compilation "cargo build"
-                                     :dap-compilation-dir "${workspaceFolder}")))
+                                     :dap-compilation-dir "${workspaceFolder}"
+                                     :cwd "${workspaceFolder}")))
 
 (with-eval-after-load 'dap-mode
   (setq dap-default-terminal-kind "integrated") ;; Make sure that terminal programs open a term for I/O in an Emacs buffer
